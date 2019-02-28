@@ -8,3 +8,9 @@ def index(request):
     return render(request, 'index.html', {
         "perguntas": todas
     })
+
+def responder(request, num_pergunta):
+    pergunta = Pergunta.objects.get(pk=num_pergunta)
+    return render(request, 'responder.html', {
+        "pergunta": pergunta
+    })

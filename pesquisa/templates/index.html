@@ -13,7 +13,7 @@
     <h1 class="main title">Aqui estão as enquetes abertas para serem respondidas!</h1>
     <ul class="main list">
         {% for pergunta in perguntas %}
-        <li class="main listitem"><a href="#">{{ pergunta }}</a></li>
+        <li class="main listitem"><a href="{% url 'responder' pergunta.id %}">{{ pergunta }}</a></li>
         {% endfor %}
     </ul>
 </body>
