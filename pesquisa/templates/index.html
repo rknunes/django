@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Aqui estão as enquetes abertas para serem respondidas!</h1>
-    <ul>
+    <h1 class="main title">Aqui estão as enquetes abertas para serem respondidas!</h1>
+    <ul class="main list">
         {% for pergunta in perguntas %}
-        <li><a href="#">{{ pergunta }}</a></li>
+        <li class="main listitem"><a href="#">{{ pergunta }}</a></li>
         {% endfor %}
     </ul>
 </body>
