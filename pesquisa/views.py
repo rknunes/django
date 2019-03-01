@@ -21,6 +21,10 @@ def votar(request):
     escolhida.votos += 1
     escolhida.save()
 
-    return render(request, 'votar.html', {
-        "texto": escolhida.texto
+    return resultados(request, escolhida.pergunta_id)
+
+def resultados(request, num_pergunta):
+    pergunta = Pergunta.objects.get(pk=num_pergunta)
+    return render(request, 'resultados.html',{
+        "pergunta": pergunta
     })
