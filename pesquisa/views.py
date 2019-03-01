@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import Pergunta
+from .models import Alternativa, Pergunta
 # Create your views here.
 
 def index(request):
@@ -13,4 +13,14 @@ def responder(request, num_pergunta):
     pergunta = Pergunta.objects.get(pk=num_pergunta)
     return render(request, 'responder.html', {
         "pergunta": pergunta
+    })
+
+def votar(request):
+    voto = request.POST['escolha']
+    escolhida = Alternativa.objects.get(pk=voto)
+    escolhida.votos += 1
+    escolhida.save()
+
+    return render(request, 'votar.html', {
+        "texto": escolhida.texto
     })
